@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/editText_email"
+        android:hint="@string/home_email"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/space_default"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/editText_password" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/editText_password"
+        android:hint="@string/home_password"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_default"
+        android:layout_marginEnd="@dimen/space_default"
+        android:layout_marginBottom="@dimen/space_default"
+
+        app:layout_constraintTop_toBottomOf="@+id/editText_email"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/button_save" />
+
+    <Button
+        android:id="@+id/button_save"
+        android:text="@string/home_save"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/space_default"
+
+        app:layout_constraintTop_toBottomOf="@+id/editText_password"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/button_show" />
+
+    <Button
+        android:id="@+id/button_show"
+        android:text="@string/home_show"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toBottomOf="@+id/button_save"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/text_emailAndPasswordView" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_emailAndPasswordView"
+        tools:text="Email and password view"
+        android:gravity="center"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/space_default"
+
+        app:layout_constraintTop_toBottomOf="@+id/button_show"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
