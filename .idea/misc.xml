@@ -5,6 +5,8 @@
       <map>
         <entry key="..\:/androidProjects/HiltDI/app/src/main/res/layout/activity_main.xml" value="0.28894927536231885" />
         <entry key="..\:/androidProjects/HiltDI/app/src/main/res/layout/layout_test_shared_preferences.xml" value="0.28894927536231885" />
+        <entry key="..\:/androidProjects/HiltDI/app/src/main/res/layout/layout_weather_fragment.xml" value="0.359375" />
+        <entry key="..\:/androidProjects/HiltDI/app/src/main/res/layout/layout_weather_item.xml" value="0.359375" />
       </map>
     </option>
   </component>

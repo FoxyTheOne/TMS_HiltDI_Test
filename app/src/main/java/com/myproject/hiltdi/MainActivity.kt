@@ -4,7 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import com.myproject.hiltdi.ui.home.TestSharedPreferencesDIFragment
+import com.myproject.hiltdi.presentation.home.TestSharedPreferencesDIFragment
+import com.myproject.hiltdi.presentation.weather.WeatherFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -15,7 +16,7 @@ class MainActivity : AppCompatActivity() {
 
         // Открываем первый фрагмент
         if (savedInstanceState == null) {
-            openFragment(TestSharedPreferencesDIFragment())
+            openFragment(WeatherFragment())
         }
     }
 

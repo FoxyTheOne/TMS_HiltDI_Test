@@ -1,4 +1,4 @@
-package com.myproject.hiltdi.ui.home
+package com.myproject.hiltdi.presentation.home
 
 import android.util.Log
 import androidx.appcompat.widget.AppCompatEditText
@@ -6,17 +6,22 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.myproject.hiltdi.data.localStorage.sharedPreference.IAppSharedPreference
-import com.myproject.hiltdi.data.network.weather.WeatherService
+import com.myproject.hiltdi.data.network.serviceWeather.WeatherService
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class TestSharedPreferencesDIViewModel: ViewModel() {
+@HiltViewModel
+class TestSharedPreferencesDIViewModel @Inject constructor(
+    var sharedPreference: IAppSharedPreference,
+    var weatherService: WeatherService
+): ViewModel() {
     companion object {
         private const val TAG = "PreferencesViewModel"
     }
 
     fun saveEmailAndPasswordSharedPreference(
-        sharedPreference: IAppSharedPreference,
         editTextEmail: AppCompatEditText,
         editTextPassword: AppCompatEditText
     ) {
@@ -32,7 +37,6 @@ class TestSharedPreferencesDIViewModel: ViewModel() {
     }
 
     fun showEmailAndPasswordSharedPreference(
-        sharedPreference: IAppSharedPreference,
         textEmailAndPasswordView: AppCompatTextView
     ) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -50,9 +54,9 @@ class TestSharedPreferencesDIViewModel: ViewModel() {
         }
     }
 
-    fun getWeather(weatherService: WeatherService) {
+    fun getWeather() {
         viewModelScope.launch(Dispatchers.IO) {
-            val weatherInMinsk = weatherService.getWeatherInMinsk().toString()
+            val weatherInMinsk = weatherService.getWeather().toString()
             Log.i(TAG, "Weather service launched")
             Log.i(TAG, weatherInMinsk)
             Log.i(TAG, "Weather service finished")

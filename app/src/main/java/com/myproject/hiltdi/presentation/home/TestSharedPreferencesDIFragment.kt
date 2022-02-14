@@ -1,4 +1,4 @@
-package com.myproject.hiltdi.ui.home
+package com.myproject.hiltdi.presentation.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,10 +8,12 @@ import android.widget.Button
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.myproject.hiltdi.R
 import com.myproject.hiltdi.data.localStorage.sharedPreference.IAppSharedPreference
-import com.myproject.hiltdi.data.network.weather.WeatherService
+import com.myproject.hiltdi.data.network.serviceWeather.WeatherService
+import com.myproject.hiltdi.presentation.weather.WeatherViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -23,25 +25,18 @@ class TestSharedPreferencesDIFragment: Fragment() {
     private lateinit var buttonShow: Button
     private lateinit var textEmailAndPasswordView: AppCompatTextView
 
-    @Inject
-    lateinit var sharedPreference: IAppSharedPreference
-    @Inject
-    lateinit var weatherService: WeatherService
-
-    private lateinit var viewModel: TestSharedPreferencesDIViewModel
+    private val viewModel by viewModels<TestSharedPreferencesDIViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.layout_home_test_shared_preferences, container, false)
+        return inflater.inflate(R.layout.layout_home_test_shared_preferences_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        viewModel = ViewModelProvider(requireActivity())[TestSharedPreferencesDIViewModel::class.java]
 
         editTextEmail = view.findViewById(R.id.editText_email)
         editTextPassword = view.findViewById(R.id.editText_password)
@@ -51,18 +46,16 @@ class TestSharedPreferencesDIFragment: Fragment() {
 
         buttonSave.setOnClickListener {
             viewModel.saveEmailAndPasswordSharedPreference(
-                sharedPreference,
                 editTextEmail,
                 editTextPassword)
         }
 
         buttonShow.setOnClickListener {
             viewModel.showEmailAndPasswordSharedPreference(
-                sharedPreference,
                 textEmailAndPasswordView
             )
         }
 
-        viewModel.getWeather(weatherService)
+        viewModel.getWeather()
     }
 }

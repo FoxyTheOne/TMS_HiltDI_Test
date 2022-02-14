@@ -1,4 +1,4 @@
-package com.tms.lesson01.musicgalleryapplication.mvvm.dataModel.network.modelData.weather
+package com.myproject.hiltdi.model.remote
 
 import com.google.gson.annotations.SerializedName
 

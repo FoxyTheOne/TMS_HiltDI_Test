@@ -1,7 +1,7 @@
-package com.myproject.hiltdi.data.network.weather
+package com.myproject.hiltdi.data.network.serviceWeather
 
 import com.myproject.hiltdi.BuildConfig
-import com.tms.lesson01.musicgalleryapplication.mvvm.dataModel.network.modelData.weather.WeatherResponse
+import com.myproject.hiltdi.model.remote.WeatherRemote
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -20,10 +20,10 @@ interface WeatherService {
     }
 
     @GET("$BASE_PATH/{weather}") // base path
-    suspend fun getWeatherInMinsk(
+    suspend fun getWeather(
         @Path("weather") weather: String = WEATHER_PATH, // path
         @Query("q") city: String = KEY_CITY,
         @Query("units") units: String = KEY_UNITS,
         @Query("appid") appid: String = KEY_API_KEY,
-    ): WeatherResponse
+    ): WeatherRemote
 }

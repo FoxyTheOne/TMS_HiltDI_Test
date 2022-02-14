@@ -1,8 +1,9 @@
-package com.tms.lesson01.musicgalleryapplication.mvvm.dataModel.network.modelData.weather
+package com.myproject.hiltdi.model.remote
 
 import com.google.gson.annotations.SerializedName
+import com.myproject.hiltdi.model.IWeather
 
-data class WeatherResponse(
+data class WeatherRemote(
     @SerializedName("coord") val coord: Coord,
     @SerializedName("weather") val weather: List<Weather>,
     @SerializedName("base") val base: String,
@@ -16,4 +17,4 @@ data class WeatherResponse(
     @SerializedName("id") val id: Int,
     @SerializedName("name") val name: String,
     @SerializedName("cod") val cod: Int
-)
+) : IWeather

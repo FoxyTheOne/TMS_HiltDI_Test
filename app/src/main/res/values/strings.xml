@@ -5,4 +5,8 @@
     <string name="home_password">Password</string>
     <string name="home_save">Save</string>
     <string name="home_show">Show</string>
+
+    <string name="weather_city">City: %1$s</string>
+    <string name="weather_temperature">Temperature: %1$s °C</string>
+    <string name="weather_humidity">Humidity: %1$s %%</string>
 </resources>
