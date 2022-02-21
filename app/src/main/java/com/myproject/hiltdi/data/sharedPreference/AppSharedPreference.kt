@@ -1,10 +1,12 @@
 package com.myproject.hiltdi.data.localStorage.sharedPreference
 
 import android.content.Context
+import com.myproject.hiltdi.data.sharedPreference.IAppSharedPreference
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
-class AppSharedPreference @Inject constructor(@ApplicationContext context: Context): IAppSharedPreference {
+class AppSharedPreference @Inject constructor(@ApplicationContext context: Context):
+    IAppSharedPreference {
     companion object {
         // Константа - имя файла
         private const val PREFERENCE_NAME = "AppSharedPreference"

@@ -1,10 +1,8 @@
 package com.myproject.hiltdi.presentation.weather
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.myproject.hiltdi.domain.weather.IWeatherInteractor
-import com.myproject.hiltdi.model.presentation.WeatherPresentation
+import com.myproject.hiltdi.domain.weatherInteractor.IWeatherInteractor
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -18,12 +16,15 @@ class WeatherViewModel @Inject constructor(private var weatherInteractor: IWeath
         private const val TAG = "WeatherViewModel"
     }
 
-    val weatherLiveData = MutableLiveData<List<WeatherPresentation>>()
+    // ПОСЛЕДОВАТЕЛЬНОСТЬ: В первую очередь, мы подписываемся на локальную базу данных, чтобы получать из Interactor ПРЕОБРАЗОВАННЫЕ в Presentation обновления
+    val weatherLiveData = weatherInteractor.subscribeOnWeather()
 
-    // 2. Из View Model мы делаем запрос в корутине в Interactor и в ответ получаем готовые к обработке данные, которые сразу передаём в LiveData
-    fun getWeather() {
+
+    // ПОСЛЕДОВАТЕЛЬНОСТЬ: Затем достаём данные из локальной базы данных (локальная аза данных обновится и по подписке нам прилетят новые данные).
+    // Для этого из View Model мы делаем запрос в корутине в Interactor
+    fun fetchWeather() {
         viewModelScope.launch(Dispatchers.IO) {
-            weatherLiveData.postValue(weatherInteractor.getWeather())
+            weatherInteractor.fetchWeather()
         }
     }
 }

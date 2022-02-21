@@ -9,9 +9,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.myproject.hiltdi.R
-import com.myproject.hiltdi.model.presentation.WeatherPresentation
+import com.myproject.hiltdi.model.presentation.WeatherResultPresentation
 
-class WeatherRecyclerAdapter(private val onItemClicked: (WeatherPresentation) -> Unit) :
+class WeatherRecyclerAdapter(private val onItemClicked: (WeatherResultPresentation) -> Unit) :
     RecyclerView.Adapter<WeatherRecyclerAdapter.ViewHolder>() {
 
     companion object {
@@ -22,7 +22,7 @@ class WeatherRecyclerAdapter(private val onItemClicked: (WeatherPresentation) ->
         const val FORMAT_SUFFIX = ".png"
     }
 
-    private val weathers = mutableListOf<WeatherPresentation>()
+    private val weathers = mutableListOf<WeatherResultPresentation>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.layout_weather_item, parent, false), onItemClicked)
@@ -33,15 +33,15 @@ class WeatherRecyclerAdapter(private val onItemClicked: (WeatherPresentation) ->
 
     override fun getItemCount(): Int = weathers.size
 
-    fun addAllWeathers(weathers: List<WeatherPresentation>) {
+    fun addAllWeathers(weathers: List<WeatherResultPresentation>) {
         this.weathers.clear()
         this.weathers.addAll(weathers)
         notifyDataSetChanged()
     }
 
-    class ViewHolder(private val view: View, private val onItemClicked: (WeatherPresentation) -> Unit) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(private val view: View, private val onItemClicked: (WeatherResultPresentation) -> Unit) : RecyclerView.ViewHolder(view) {
 
-        private var weather: WeatherPresentation? = null
+        private var weather: WeatherResultPresentation? = null
 
         private val weatherCityText: TextView = view.findViewById(R.id.text_weatherCity)
         private val weatherTemperatureText: TextView = view.findViewById(R.id.text_weatherTemperature)
@@ -56,7 +56,7 @@ class WeatherRecyclerAdapter(private val onItemClicked: (WeatherPresentation) ->
             }
         }
 
-        fun setWeather(weather: WeatherPresentation) {
+        fun setWeather(weather: WeatherResultPresentation) {
             this.weather = weather
             view.context?.let { context ->
                 val cityText = context.getString(R.string.weather_city, weather.city)

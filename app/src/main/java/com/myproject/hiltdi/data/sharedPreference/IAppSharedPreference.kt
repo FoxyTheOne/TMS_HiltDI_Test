@@ -1,4 +1,4 @@
-package com.myproject.hiltdi.data.localStorage.sharedPreference
+package com.myproject.hiltdi.data.sharedPreference
 
 interface IAppSharedPreference {
     fun saveEmail(email: String)

@@ -5,8 +5,8 @@ import androidx.appcompat.widget.AppCompatEditText
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.myproject.hiltdi.data.localStorage.sharedPreference.IAppSharedPreference
-import com.myproject.hiltdi.data.network.serviceWeather.WeatherService
+import com.myproject.hiltdi.data.sharedPreference.IAppSharedPreference
+import com.myproject.hiltdi.data.networkService.WeatherService
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

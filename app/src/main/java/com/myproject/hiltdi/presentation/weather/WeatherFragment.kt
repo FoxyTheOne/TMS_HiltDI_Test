@@ -37,13 +37,15 @@ class WeatherFragment: Fragment() {
         }
         weatherRecyclerView.adapter = weatherRecyclerAdapter
 
-        // 1. Делаем запрос на получение погоды из фрагмента в view model и ждем результат, готовый для отображения
-        viewModel.getWeather()
-
+        // ПОСЛЕДОВАТЕЛЬНОСТЬ: В первую очередь, мы подписываемся на локальную базу данных, чтобы получать из ViewModel ПРЕОБРАЗОВАННЫЕ в Presentation обновления
         subscribeOnLiveData()
+        // ПОСЛЕДОВАТЕЛЬНОСТЬ: Затем достаём данные из локальной базы данных (локальная аза данных обновится и по подписке нам прилетят новые данные).
+        // Для этого из View Model мы делаем запрос в корутине в Interactor
+        viewModel.fetchWeather()
     }
 
     private fun subscribeOnLiveData() {
+        // В подписке на LiveData мы заполняем наш RecyclerView Presentation погодой
         viewModel.weatherLiveData.observe(this, { weathers ->
             weatherRecyclerAdapter.addAllWeathers(weathers = weathers)
         })

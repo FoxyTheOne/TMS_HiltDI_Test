@@ -9,13 +9,8 @@ import androidx.appcompat.widget.AppCompatEditText
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import com.myproject.hiltdi.R
-import com.myproject.hiltdi.data.localStorage.sharedPreference.IAppSharedPreference
-import com.myproject.hiltdi.data.network.serviceWeather.WeatherService
-import com.myproject.hiltdi.presentation.weather.WeatherViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class TestSharedPreferencesDIFragment: Fragment() {

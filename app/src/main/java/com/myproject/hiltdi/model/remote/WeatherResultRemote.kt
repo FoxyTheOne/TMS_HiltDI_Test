@@ -3,7 +3,7 @@ package com.myproject.hiltdi.model.remote
 import com.google.gson.annotations.SerializedName
 import com.myproject.hiltdi.model.IWeather
 
-data class WeatherRemote(
+data class WeatherResultRemote(
     @SerializedName("coord") val coord: Coord,
     @SerializedName("weather") val weather: List<Weather>,
     @SerializedName("base") val base: String,

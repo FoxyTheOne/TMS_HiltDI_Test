@@ -1,7 +1,7 @@
-package com.myproject.hiltdi.data.network.serviceWeather
+package com.myproject.hiltdi.data.networkService
 
 import com.myproject.hiltdi.BuildConfig
-import com.myproject.hiltdi.model.remote.WeatherRemote
+import com.myproject.hiltdi.model.remote.WeatherResultRemote
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -25,5 +25,5 @@ interface WeatherService {
         @Query("q") city: String = KEY_CITY,
         @Query("units") units: String = KEY_UNITS,
         @Query("appid") appid: String = KEY_API_KEY,
-    ): WeatherRemote
+    ): WeatherResultRemote
 }
